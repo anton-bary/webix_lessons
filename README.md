@@ -1,2 +1,2 @@
-# webix_lessones
-lessones
+# webix_lessons
+lessons
