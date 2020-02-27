@@ -7,11 +7,11 @@
     <title>Lesson 01</title>
 
     <!-- WEBIX library -->
-    <script type="text/javascript" src="//cdn.webix.com/edge/webix.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.webix.com/edge/webix.css">
+    <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
     <!-- /WEBIX library -->
     <!-- app files-->
-    <script src="js/data.js"></script>
+
     <style>
         .sidebar_list {
             background-color: #eee;
@@ -21,6 +21,7 @@
 </head>
 
 <body>
+    <script src="js/data.js"></script>
     <div id="app"></div>
     <script type="text/javascript" charset="utf-8">
         webix.ready(function() {
@@ -65,9 +66,46 @@
                         view: "resizer"
                     }, {
                         view: "datatable",
-                        data: "small_film_set",
+                        id: "film_list",
+                        data: small_film_set,
+                        scroll: "y",
+                        autoConfig: true,
                     }, {
-                        template: "form"
+                        view: "form",
+                        id: "film_form",
+                        width: 400,
+                        elements: [{
+                            type: "section",
+                            template: "EDIT FILMS"
+                        }, {
+                            view: "text",
+                            name: "title",
+                            label: "Title",
+                        }, {
+                            view: "text",
+                            name: "year",
+                            label: "Year",
+                        }, {
+                            view: "text",
+                            name: "rating",
+                            label: "Rating",
+                        }, {
+                            view: "text",
+                            name: "votes",
+                            label: "Votes",
+                        }, {
+                            margin: 10,
+                            cols: [{
+                                view: "button",
+                                id: "add_new",
+                                value: "Add new",
+                                css: "webix_primary",
+                            }, {
+                                view: "button",
+                                id: "clear",
+                                value: "Clear",
+                            }]
+                        }, {}]
                     }]
                 }, {
                     template: "bottom"
