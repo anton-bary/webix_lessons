@@ -7,8 +7,8 @@
     <title>Lesson 01</title>
 
     <!-- WEBIX library -->
-    <script type="text/javascript" src="http://cdn.webix.com/edge/webix.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://cdn.webix.com/edge/webix.css">
+    <script type="text/javascript" src="//cdn.webix.com/edge/webix.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.webix.com/edge/webix.css">
     <!-- /WEBIX library -->
     <!-- app files-->
 
@@ -16,6 +16,10 @@
         .sidebar_list {
             background-color: #eee;
             font-weight: 500;
+        }
+        
+        .centered {
+            text-align: center;
         }
     </style>
 </head>
@@ -108,7 +112,11 @@
                         }, {}]
                     }]
                 }, {
-                    template: "bottom"
+                    cols: [{
+                        template: "The software is provided by <a href='#'>webix.com</a>. All rights reserved (c)",
+                        css: "centered",
+                        height: 30,
+                    }]
                 }]
             });
         });
