@@ -1,7 +1,7 @@
 var datatable = {
     view: "datatable",
     id: "film_list",
-    url: "/js/data.js",
+    url: "js/data.js",
     scroll: "y",
     columns: [
         { id: "num", header: "", width: 50, css: "num-col" },
