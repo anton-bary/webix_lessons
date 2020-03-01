@@ -1,0 +1,3 @@
+var resizer = {
+    view: "resizer"
+}

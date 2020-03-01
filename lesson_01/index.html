@@ -10,8 +10,20 @@
     <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
     <!-- /WEBIX library -->
-    <!-- app files-->
 
+    <!-- DATA and FUNCTIONS-->
+    <script src="js/data.js"></script>
+    <script src="js/functions.js"></script>
+
+    <!-- MODULES -->
+    <script src="js/modules/header.js"></script>
+    <script src="js/modules/sidebar.js"></script>
+    <script src="js/modules/resizer.js"></script>
+    <script src="js/modules/datatable.js"></script>
+    <script src="js/modules/form.js"></script>
+    <script src="js/modules/footer.js"></script>
+
+    <!-- STYLES -->
     <style>
         .sidebar_list {
             background-color: #eee;
@@ -25,124 +37,23 @@
 </head>
 
 <body>
-    <script src="js/data.js"></script>
+
     <div id="app"></div>
     <script type="text/javascript" charset="utf-8">
         webix.ready(function() {
             webix.ui({
-                rows: [{
-                    view: "toolbar",
-                    id: "topToolbar",
-                    css: "webix_dark",
-                    cols: [{
-                        view: "label",
-                        label: "My app",
-                    }, {}, {
-                        view: "button",
-                        label: "Profile",
-                        css: "webix_transparent",
-                        width: 200,
-                        type: "icon",
-                        icon: "wxi-user",
-                        popup: "profile_popup"
-                    }],
-                }, {
-                    cols: [{
-                        view: "list",
-                        css: "sidebar_list",
-                        scroll: false,
-                        width: 250,
-                        template: "#title#",
-                        select: true,
-                        data: [{
-                            id: 1,
-                            title: "Dashboard"
-                        }, {
-                            id: 2,
-                            title: "Users"
-                        }, {
-                            id: 3,
-                            title: "Products"
-                        }, {
-                            id: 4,
-                            title: "Location"
-                        }]
+                rows: [
+                    header, {
+                        cols: [
+                            sidebar,
+                            resizer,
+                            datatable,
+                            form,
+                        ]
                     }, {
-                        view: "resizer"
-                    }, {
-                        view: "datatable",
-                        id: "film_list",
-                        data: small_film_set,
-                        scroll: "y",
-                        autoConfig: true,
-                    }, {
-                        view: "form",
-                        id: "film_form",
-                        width: 400,
-                        elements: [{
-                            type: "section",
-                            template: "EDIT FILMS"
-                        }, {
-                            view: "text",
-                            name: "title",
-                            label: "Title",
-                            invalidMessage: "Title is shouldn't be empty",
-                        }, {
-                            view: "text",
-                            name: "year",
-                            label: "Year",
-                            invalidMessage: "Year is should be between 1970 and current date",
-                        }, {
-                            view: "text",
-                            name: "rating",
-                            label: "Rating",
-                            invalidMessage: "Rating is shouldn't be 0 or empty",
-                        }, {
-                            view: "text",
-                            name: "votes",
-                            label: "Votes",
-                            invalidMessage: "Vote is shouldn't be more then 1000000 or empty",
-                        }, {
-                            margin: 10,
-                            cols: [{
-                                view: "button",
-                                id: "add_new",
-                                value: "Add new",
-                                css: "webix_primary",
-                                click: addFilm,
-                            }, {
-                                view: "button",
-                                id: "clear",
-                                value: "Clear",
-                                click: clearForm,
-                            }]
-                        }, {}],
-                        rules: {
-                            "title": webix.rules.isNotEmpty,
-                            "rating": function(value) {
-                                if (webix.rules.isNumber(value) && value != 0) {
-                                    return true;
-                                }
-                            },
-                            "votes": function(value) {
-                                if (value >= 1 && value < 1000000) {
-                                    return true;
-                                }
-                            },
-                            "year": function(value) {
-                                if (value >= 1970 && value <= new Date().getFullYear()) {
-                                    return true;
-                                }
-                            }
-                        }
-                    }]
-                }, {
-                    cols: [{
-                        template: "The software is provided by <a href='#'>webix.com</a>. All rights reserved (c)",
-                        css: "centered",
-                        height: 30,
-                    }]
-                }]
+                        cols: [footer]
+                    }
+                ]
             });
             webix.ui({
                 view: "popup",
@@ -163,31 +74,6 @@
                 }
             }).hide();
 
-            function addFilm() {
-                if ($$("film_form").validate()) {
-                    $$("film_list").add({
-                        title: $$("film_form").getValues().title,
-                        year: $$("film_form").getValues().year,
-                        rating: $$("film_form").getValues().rating,
-                        votes: $$("film_form").getValues().votes,
-                    }, 0);
-                    webix.message("Film was added.");
-                }
-            }
-
-            function clearForm() {
-                webix.confirm({
-                    title: "All values will be clear",
-                    text: "Do you really want to clear all values?"
-                }).then(function() {
-                    $$("film_form").clear();
-                    $$("film_form").clearValidation();
-                    webix.message("Form was cleared");
-                }).fail(function() {
-                    webix.message("Form wasn't cleared");
-                })
-
-            }
         });
     </script>
 </body>
