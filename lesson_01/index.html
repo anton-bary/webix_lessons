@@ -17,10 +17,10 @@
 
     <!-- MODULES -->
     <script src="js/modules/header.js"></script>
-    <script src="js/modules/sidebar.js"></script>
     <script src="js/modules/resizer.js"></script>
     <script src="js/modules/datatable.js"></script>
     <script src="js/modules/form.js"></script>
+    <script src="js/modules/sidebar.js"></script>
     <script src="js/modules/footer.js"></script>
 
     <!-- STYLES -->
@@ -32,6 +32,10 @@
         
         .centered {
             text-align: center;
+        }
+        
+        .num-col {
+            background-color: #F4F5F9;
         }
     </style>
 </head>
@@ -47,8 +51,7 @@
                         cols: [
                             sidebar,
                             resizer,
-                            datatable,
-                            form,
+                            multiview,
                         ]
                     }, {
                         cols: [footer]

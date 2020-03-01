@@ -6,16 +6,31 @@ var sidebar = {
     template: "#title#",
     select: true,
     data: [{
-        id: 1,
+        id: "dashboard",
         title: "Dashboard"
     }, {
-        id: 2,
+        id: "users",
         title: "Users"
     }, {
-        id: 3,
+        id: "products",
         title: "Products"
     }, {
-        id: 4,
+        id: "location",
         title: "Location"
-    }]
+    }],
+    on: {
+        onAfterSelect: function(id) {
+            $$(id).show();
+        }
+    }
+}
+
+var multiview = {
+    view: "multiview",
+    cells: [
+        { id: "dashboard", cols: [datatable, form] },
+        { id: "users", template: "users" },
+        { id: "products", template: "products" },
+        { id: "location", template: "location" },
+    ]
 }
