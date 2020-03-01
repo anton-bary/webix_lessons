@@ -7,8 +7,8 @@
     <title>Lesson 01</title>
 
     <!-- WEBIX library -->
-    <script type="text/javascript" src="//cdn.webix.com/edge/webix.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.webix.com/edge/webix.css">
+    <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
     <!-- /WEBIX library -->
     <!-- app files-->
 
@@ -44,6 +44,7 @@
                         width: 200,
                         type: "icon",
                         icon: "wxi-user",
+                        popup: "profile_popup"
                     }],
                 }, {
                     cols: [{
@@ -119,6 +120,24 @@
                     }]
                 }]
             });
+            webix.ui({
+                view: "popup",
+                id: "profile_popup",
+                scroll: false,
+                body: {
+                    view: "list",
+                    template: "#title#",
+                    select: true,
+                    autoheight: true,
+                    data: [{
+                        id: "settings",
+                        title: "Settings",
+                    }, {
+                        id: "logout",
+                        title: "Log out",
+                    }]
+                }
+            }).hide();
         });
     </script>
 </body>
