@@ -30,7 +30,7 @@ var multiview = {
     cells: [
         { id: "dashboard", cols: [datatable, form] },
         { id: "users", rows: [users] },
-        { id: "products", template: "products" },
+        { id: "products", rows: [products] },
         { id: "location", template: "location" },
     ]
 }
