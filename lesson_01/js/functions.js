@@ -34,3 +34,13 @@ function clearForm() {
         webix.message("Form wasn't cleared");
     })
 }
+
+function addUser() {
+    var userObj = {
+        "name": "Name",
+        "age": Math.floor(Math.random() * 80) + 10,
+        "country": "Country"
+    }
+    $$("user_list").add(userObj);
+    $$("chart").add(userObj);
+}

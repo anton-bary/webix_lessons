@@ -3,7 +3,21 @@ webix.protoUI({
 }, webix.EditAbility, webix.ui.list);
 
 var users = {
-    rows: [{
+    rows: [
+        {
+            cols: [
+                {
+                    view: "button",
+                    id: "add_user_btn",
+                    value: "Add new",
+                    width: 150,
+                    css: "webix_primary",
+                    click: addUser,
+                },
+                {},
+            ]
+        },
+        {
             view: "editlist",
             editable: true,
             editor: "text",
@@ -14,6 +28,7 @@ var users = {
             template: "#name# from #country#"
         },
         {
+            id: "chart",
             view: "chart",
             type: "bar",
             value: "#age#",
