@@ -1,5 +1,6 @@
 var products = {
     view: "treetable",
+    editable: true,
     scrollX: false,
     columns: [
         { id: "id", header: "", width: 50 },
@@ -7,10 +8,19 @@ var products = {
             id: "value",
             header: "Title",
             fillspace: true,
-            template: "{common.treetable()} #title#"
+            template: "{common.treetable()} #title#",
+            editor: "text",
         },
-        { id: "price", header: "Price", width: 200 }
+        { 
+            id: "price", 
+            header: "Price", 
+            width: 200,
+            editor: "text",
+        }
     ],
     select: "row",
-    url: "js/products.js"
+    url: "js/products.js",
+    rules: {
+        "title": webix.rules.isNotEmpty
+    }
 }
