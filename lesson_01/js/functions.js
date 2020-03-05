@@ -1,13 +1,25 @@
 function addFilm() {
-    if ($$("film_form").validate()) {
-        $$("film_list").add({
-            title: $$("film_form").getValues().title,
-            year: $$("film_form").getValues().year,
-            rating: $$("film_form").getValues().rating,
-            votes: $$("film_form").getValues().votes,
-        }, 0);
-        webix.message("Film was added.");
+    var form = $$("film_form");
+    var list = $$("film_list");
+    var item_data = $$("film_form").getValues();
+
+    if(form.isDirty() && form.validate()) {
+        if(item_data.id) {
+            list.updateItem(item_data.id, item_data);
+        } else {
+            list.add(item_data);
+        }
     }
+
+    // if ($$("film_form").validate()) {
+    //     $$("film_list").add({
+    //         title: $$("film_form").getValues().title,
+    //         year: $$("film_form").getValues().year,
+    //         rating: $$("film_form").getValues().rating,
+    //         votes: $$("film_form").getValues().votes,
+    //     }, 0);
+    //     webix.message("Film was added.");
+    // }
 }
 
 function clearForm() {
