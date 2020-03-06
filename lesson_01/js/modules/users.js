@@ -24,15 +24,19 @@ var users = {
             editValue: "name",
             id: "user_list",
             select: true,
-            url: "js/users.js",
-            template: "#name# from #country#"
+            template: "#name# from #country# <span class='webix_icon wxi-close delete_icon'></span>",
+            onClick: {
+                "delete_icon": function delete_row(e, id) {
+                    this.remove(id);
+                    return false;
+                }
+            }
         },
         {
             id: "chart",
             view: "chart",
             type: "bar",
             value: "#age#",
-            url: "js/users.js",
             xAxis: {
                 template: "#age#",
                 title: "Age"

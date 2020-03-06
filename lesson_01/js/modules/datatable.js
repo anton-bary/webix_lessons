@@ -14,7 +14,7 @@ var datatable = {
         { header: "", template: "<span class='webix_icon wxi-trash delete_icon'></span>", width: 35}
     ],
     onClick: {
-        "delete_icon" : function delete_icon(e, id) {
+        "delete_icon" : function delete_item(e, id) {
             this.remove(id);
         }
     },
