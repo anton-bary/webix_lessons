@@ -3,8 +3,8 @@ function addFilm() {
     var list = $$("film_list");
     var item_data = $$("film_form").getValues();
 
-    if(form.isDirty() && form.validate()) {
-        if(item_data.id) {
+    if (form.isDirty() && form.validate()) {
+        if (item_data.id) {
             list.updateItem(item_data.id, item_data);
         } else {
             list.add(item_data);

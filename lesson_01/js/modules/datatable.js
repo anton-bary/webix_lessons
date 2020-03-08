@@ -7,14 +7,14 @@ var datatable = {
     hover: "pointer",
     columns: [
         { id: "id", header: "", width: 50, css: "num-col" },
-        { id: "title", header: "Film title", fillspace: true },
-        { id: "year", header: "Released", width: 100 },
-        { id: "votes", header: "Votes", width: 100 },
-        { id: "rating", header: "Rating", width: 100 },
-        { header: "", template: "<span class='webix_icon wxi-trash delete_icon'></span>", width: 35}
+        { id: "title", header: ["Film title", { content: "textFilter" }], fillspace: true, sort: "string" },
+        { id: "votes", header: ["Votes", { content: "textFilter" }], width: 100, sort: "int" },
+        { id: "rating", header: ["Rating", { content: "textFilter" }], width: 100, sort: "int" },
+        { id: "year", header: ["Released", { content: "selectFilter" }], width: 100, sort: "int" },
+        { header: "", template: "<span class='webix_icon wxi-trash delete_icon'></span>", width: 35 }
     ],
     onClick: {
-        "delete_icon" : function delete_item(e, id) {
+        "delete_icon": function delete_item(e, id) {
             this.remove(id);
         }
     },

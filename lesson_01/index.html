@@ -39,9 +39,13 @@
         .num-col {
             background-color: #F4F5F9;
         }
-
+        
         .pointer {
             cursor: pointer;
+        }
+        
+        .float_right {
+            float: right;
         }
     </style>
 </head>
@@ -50,7 +54,6 @@
 
     <div id="app"></div>
     <script type="text/javascript" charset="utf-8">
-
         webix.ready(function() {
             var data_users = new webix.DataCollection({
                 url: "js/users.js"
@@ -90,13 +93,19 @@
             }).hide();
 
             /* sync chart and list data */
-             $$('user_list').sync(data_users);
-             $$('chart').sync($$('user_list'), function(){
-                 this.group("age")
-             });
+            $$('user_list').sync(data_users);
+            $$('chart').sync($$('user_list'), function() {
+                this.group("age")
+            });
 
+            /* user list filter */
+            $$("list_input").attachEvent("onTimedKeyPress", function() {
+                var value = this.getValue().toLowerCase();
+                $$("user_list").filter(function(obj) {
+                    return obj.name.toLowerCase().indexOf(value) !== -1;
+                })
+            });
         });
-       
     </script>
 </body>
 

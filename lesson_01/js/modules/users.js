@@ -3,10 +3,8 @@ webix.protoUI({
 }, webix.EditAbility, webix.ui.list);
 
 var users = {
-    rows: [
-        {
-            cols: [
-                {
+    rows: [{
+            cols: [{
                     view: "button",
                     id: "add_user_btn",
                     value: "Add new",
@@ -14,7 +12,30 @@ var users = {
                     css: "webix_primary",
                     click: addUser,
                 },
-                {},
+                {
+                    view: "text",
+                    id: "list_input",
+                },
+                {
+                    view: "button",
+                    id: "btn_asc",
+                    width: 150,
+                    value: "Sort ASC",
+                    css: "webix_primary",
+                    click: () => {
+                        $$("user_list").sort("#name#", "asc");
+                    }
+                },
+                {
+                    view: "button",
+                    id: "btn_desc",
+                    width: 150,
+                    value: "Sort DESC",
+                    css: "webix_primary",
+                    click: () => {
+                        $$("user_list").sort("#name#", "desc");
+                    }
+                }
             ]
         },
         {
@@ -24,7 +45,7 @@ var users = {
             editValue: "name",
             id: "user_list",
             select: true,
-            template: "#name# from #country# <span class='webix_icon wxi-close delete_icon'></span>",
+            template: "#name# from #country# <span class='webix_icon wxi-close delete_icon float_right'></span>",
             onClick: {
                 "delete_icon": function delete_row(e, id) {
                     this.remove(id);
