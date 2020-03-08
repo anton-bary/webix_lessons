@@ -42,5 +42,4 @@ function addUser() {
         "country": "Country"
     }
     $$("user_list").add(userObj);
-    $$("chart").add(userObj);
 }

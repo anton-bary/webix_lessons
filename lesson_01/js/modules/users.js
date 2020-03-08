@@ -58,6 +58,7 @@ var users = {
             view: "chart",
             type: "bar",
             value: "#age#",
+            label: "#age#",
             xAxis: {
                 template: "#age#",
                 title: "Age"
