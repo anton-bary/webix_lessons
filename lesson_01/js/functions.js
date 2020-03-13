@@ -41,5 +41,6 @@ function addUser() {
         "age": Math.floor(Math.random() * 80) + 10,
         "country": "Country"
     }
-    $$("user_list").add(userObj);
+    //add to collection
+    data_users.add(userObj);
 }

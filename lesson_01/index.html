@@ -56,7 +56,11 @@
     <script type="text/javascript" charset="utf-8">
         webix.ready(function() {
             var data_users = new webix.DataCollection({
-                url: "js/users.js"
+                url: "js/users.js",
+                scheme:{
+                    //$init: //add obj.$css
+
+                }
             })
             console.log(data_users.data.pull);
 
@@ -94,7 +98,7 @@
 
             /* sync chart and list data */
             $$('user_list').sync(data_users);
-            $$('chart').sync($$('user_list'), function() {
+            $$('chart').sync(data_users, function() {
                 this.group("age")
             });
 

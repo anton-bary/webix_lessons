@@ -48,7 +48,7 @@ var users = {
             template: "#name# from #country# <span class='webix_icon wxi-close delete_icon float_right'></span>",
             onClick: {
                 "delete_icon": function delete_row(e, id) {
-                    this.remove(id);
+                    users_data.remove(id);
                     return false;
                 }
             }
